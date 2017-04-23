@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+const int MAXI = 100000;
+
+char s[1000000];
+char *t ;
+
+void get_names(char *s, FILE *in, FILE *out) {
+	
+	char *p = strtok(s, ",");
+	
+	while(p != NULL) {
+		
+	
+		char *t = strchr(p, '"');
+		
+		p = strtok(NULL, ",");
+		++t;
+		while(*t != '"')
+			fprintf(out, "%c", *t), ++t;
+		fprintf(out, ",");
+	}
+}
+
+void get_fields(char *s, FILE *in, FILE *out) {
+	
+	char *p = strtok(s, ",");
+	while(p != NULL) {
+		
+		t = strchr(p, ':');
+		p = strtok(NULL, ",");
+		
+		while(t != NULL && *t != '"' && !('0' <= *t && *t <= '9') )   ++t;
+		
+		
+		if( '0' <= *t && *t <= '9')	{
+			while('0' <= *t && *t <= '9')
+				fprintf(out,"%c", *t), ++t;
+			fprintf(out,",");
+		} else {
+			
+			++t;
+			char *x = t;			
+			while(*t != 34)  ++t;
+			*t = '\0';
+
+			fprintf(out, "%s", x);
+			fprintf(out, ",");
+			
+		}
+				
+	}
+}
+
+
+int main() {
+
+	FILE *in = fopen("convertor.in", "r");
+	FILE *out = fopen("convertor.out", "w");
+	
+	char c; int n;int first = 1;
+
+	t = malloc(MAXI);
+	c = fgetc(in);
+
+	while(c != EOF) {
+
+		n = 0;
+		while(c != EOF && c != '}') {
+			
+			if(c != '\n' && c != '\0') s[n++] = c;
+			c = fgetc(in);	
+		}
+	
+		s[n++] = '\0';
+		char *s_cp = strdup(s);	
+		if(first) {
+			get_names(s, in, out);
+			first = 0;
+			fprintf(out, "\n");
+		}
+		
+
+		get_fields(s_cp, in, out);
+		fprintf(out, "\n");
+
+		while(c != EOF && c != '{') 
+			c = fgetc(in);
+	}
+	return 0;
+}

@@ -1,0 +1,13 @@
+template<typename T>
+class KeyStorage {
+
+public: 
+	KeyStorage(int);
+	~KeyStorage();
+ 	
+	T getMember();
+	T setMember(T element);
+private:
+	T member;
+	int key;
+};

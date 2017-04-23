@@ -1,0 +1,5 @@
+Infoarena:
+1) car = dijkstra cu costuri mici
+2) zoo = arbori de intervale, queryuri per dreptunghiuir (cate puncte sunt in aria un dreptunghi dat)
+	ortogonal search (caz particular la 2 dimensiuni)
+3) distanta Manhattan, transformare cu conservare a unei propietati

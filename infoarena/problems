@@ -1,0 +1,63 @@
+infoarena:
+
+
+1)ndap        : dinamica 3^n, submultimi disjuncte
+
+2)zebunghil   : multiple knapsack problem, inghesuire eficienta in mai multe rucasace
+			  dinamica O(2^n * n^2) asemanator cu Hamilton
+
+3)colectie    : nr de cifre x care apare in numerele [1..K] + cautare binara pe mai	
+			  multe criterii absolute
+
+4)password    : rotatie lexicografica mnima + articol : 
+			  http://www.infoarena.ro/rotatie-lexicografic-minima
+
+5)struti      : scanare cu deque, ca sa obti un maxim/minim in toate dreptunghirile
+			  de dimeansiune data
+
+6)delay 	  : arbore, 2 operatii in log(N): update nodul cu o valoare, suma 
+				ndourilor de pe un lant, smen sume partiale la arbore (timpi dfs)
+
+7)amenzi      : n evenimente cu profit intr-un graf ponderat la un moment de timp x =>	
+		      maximare profit, d[t][nod] = la mom t profit daca sunt in nod
+
+8) divizori   : trebuie sa ceezi un sir sa se variaze de la un ps la altul un element,
+				in plus sau altul => coduri gray, pune sirul divizorilor unui nr
+				intr-o ordine astfel incat oricare doi consecutivi sa se divida 
+
+9) colorare   : cum poti colora un graf cu cat mai putine culori
+				dinamica O(n^2 * 3^n), iei bucati coloare cu aceeasi culoare, le 
+				 reunesti daca e posibil
+
+10) zoo 	  : queryuri: cate puncte sunt in interiroul unei dreptunhgi dat?, le reti sortate
+				dupa cealalta dimensiune in nodurile arb de intervale, faci cautare binara per nod
+11) car 	  : dijkstra cu costuri mici
+12) smax 	  : distanta mahattan, se da o matrice si se cer queryuri pe distante mahattan
+				transformare matrice [i + j][i - j + m], m e nr de coloane
+				e o transformare care conserva niste propietati, acum putem lua dreptunghiuri
+13) bmatrix   : dreptunghiul maxim: cate sunt libere (goale) maxim in sus d[i][j] = d[i - 1][j] + 1
+				apoi parcurgi linie cu linie si reti intr-o stiva O(n^2)
+				pt problema cele 2 dreptunghiuri vor fi delimitate de o linie oriz sau verticala
+	patrat maxim : doar de 0 de arie maxima : d[i][j] = min(d[i- 1][j], d[i][j-1], d[i-1][j-1]) + 1
+	O(n^2)
+14) problema in care fixai o linie (sau 2) pe matrici n^3 ?
+15) easygraph : lantul cu suma maxima intr-un DAG (ca la dijkstra), sortaezi topologic
+16) padure2   : nr de drumuri posibile intr-o matrice de la (1,1) la(n, m) ocolind niste obstacole
+				calculezi din bostacol in obstacol nr drumuri totale - nr drumuri prin obstacole
+				cum poti parcurge multimi?, vrei anumite submultimi in functie de o propeietate:
+				sa aiba cel putin un 1 (1 insemna ca contine un obstacol, 0 ca nu)
+				??????????-
+				1?????????
+				01????????
+				001???????
+				----------
+				xxxxxxxxxx, are numai 0 ori (ocoleste toate obstacolele)
+17) zombie (mindcode) : 
+				dearangements : mai multe formule de recurenta n! - alea care punct fixate cu prin includerii
+				surjectii : (n obiecte marcate la m multimi marcate):
+							cu recurenta, sau in O(m log m) cu prin incl si explucderii :
+				zici ca or sa fie k multimi care nu primesc nimic => comb(m, k)
+				asignezi liber n obiectele la m - k multimi ramase => (m - k)^n
+				res = sum(k = 0, m) comb(m,k) * (m - k)^n * (-1)^k
+
+18) long Story Short (lss) : arobri de intervale cu lazy update , (pentru minimi)
